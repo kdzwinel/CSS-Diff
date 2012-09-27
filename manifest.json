@@ -1,0 +1,13 @@
+{
+  "name": "CSS Diff",
+  "description": "Easily compare CSS of two HTML elements.",
+  "version": "0.1",
+  "manifest_version": 2,
+  "minimum_chrome_version": "18.0",
+  "permissions": [],
+  "icons": {
+     "64": "img/logo_64.png",
+     "128": "img/logo_128.png"
+  },
+  "devtools_page": "devtools.html"
+}
