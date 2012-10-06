@@ -1,0 +1,98 @@
+* {
+    font-family: dejavu sans mono, monospace;
+    font-size: 11px;
+    -webkit-box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+div.block {
+    padding: 2px;
+}
+
+table {
+    width: 100%;
+}
+
+td, th {
+    height: 15px;
+}
+
+    th {
+        min-width: 90px;
+        padding-right: 3px;
+        color: #C80000;
+        font-weight: normal;
+        text-align: left;
+
+        border-right: solid 1px #555;
+        border-bottom: solid 1px #555;
+    }
+
+.description {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.element0 {
+
+}
+
+.element1 {
+    background-color: #F0F0F0;
+}
+
+.suffix {
+    display: none;
+}
+
+    .suffix th {
+        padding-left: 20px;
+    }
+
+tr.lower td {
+    border-bottom: solid #555 1px;
+}
+
+th.suffix-parent {
+    cursor: pointer;
+}
+
+    th.suffix-parent::before {
+        content: url(../img/treeRightTriangleBlack.png);
+        opacity: 0.75;
+        float: left;
+        width: 8px;
+        height: 8px;
+        margin-top: 2px;
+        padding-right: 3px;
+        -webkit-user-select: none;
+    }
+
+    th.suffix-parent.open::before {
+        content: url(../img/treeDownTriangleBlack.png);
+    }
+
+.sidebar-separator {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#F3F3F3), color-stop(0.05, #F3F3F3), color-stop(0.05, #E6E6E6), to(#D1D1D1));
+    padding: 0 5px;
+    border-top: 1px solid #BDBDBD;
+    border-bottom: 1px solid #BDBDBD;
+    color: #6E6E6E;
+    text-shadow: white 0 1px 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 11px;
+}
+
+.info {
+    text-align: center;
+    font-style: italic;
+    font-size: 10px;
+    padding: 6px;
+    color: black;
+}
