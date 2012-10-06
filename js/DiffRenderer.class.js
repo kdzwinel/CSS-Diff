@@ -15,7 +15,7 @@ function DiffRenderer(container) {
         return name;
     }
 
-    //Checks if attribute has a suffix and returnes it
+    //Checks if attribute has a (known) suffix and returns it
     var getSuffix = function(attrName) {
         for(var idx in suffixes) {
             var suffix = suffixes[idx];
@@ -28,10 +28,13 @@ function DiffRenderer(container) {
         return null;
     }
 
+    //Checks if given attribute name is used as a suffix for other attributes
     var isSuffix = function(attrName) {
         return ( suffixes.indexOf(attrName) !== -1 );
     }
 
+    //Renders a table with attribute differences
+    //TODO Clean it up! Rethink the HTML structure.
     this.render = function(element0, element1, diff) {
         var buffer = "";
         var webkitBuffer = "";
@@ -65,6 +68,7 @@ function DiffRenderer(container) {
                 row += "<td class='element1'>" + value[1] + "</td>";
             row += "</tr>";
 
+            //webkit attributes will be put to a different table
             if(name.substr(0, 6) === "webkit") {
                 webkitBuffer += row;
             } else {
@@ -82,7 +86,7 @@ function DiffRenderer(container) {
 
         container.innerHTML = buffer;
 
-        //react to "onclick" events on parent elements
+        //react to "onclick" events on attributes that have children
         var suffixParents = container.getElementsByClassName('suffix-parent');
         for (var i = 0, il = suffixParents.length; i < il ; i++) {
             var suffixParent = suffixParents[i];

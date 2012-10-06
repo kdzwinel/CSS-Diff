@@ -1,6 +1,4 @@
-/**
- * Returns JSON with CSS properties that differ between two given HTML elements.
- */
+// Returns JSON with CSS properties that differ between two given HTML elements.
 var page_compareElements = function(a, b) {
     if(a === undefined || b === undefined) {
         return null;
@@ -42,8 +40,11 @@ window.onload = function() {
     var diffRenderer = new DiffRenderer(body);
 
     function updateElementProperties() {
+
+        //evals page_compareElements($0, $1) in current page context
         chrome.devtools.inspectedWindow.eval("(" + page_compareElements.toString() + ")($0, $1)", function (result) {
             if(result !== null) {
+                //renders the attributes differences table
                 diffRenderer.render( result.element0, result.element1, result.diff );
             } else {
                 body.innerHTML = "<div class='info'>Nothing to compare. Inspect two elements first.</div>";

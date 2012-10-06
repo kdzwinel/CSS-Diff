@@ -1,7 +1,7 @@
 {
   "name": "CSS Diff",
   "description": "Easily compare CSS of two HTML elements.",
-  "version": "0.11",
+  "version": "0.2",
   "manifest_version": 2,
   "minimum_chrome_version": "18.0",
   "permissions": [],

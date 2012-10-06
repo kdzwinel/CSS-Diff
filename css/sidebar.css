@@ -22,7 +22,7 @@ td, th {
 }
 
     th {
-        min-width: 90px;
+        width: 90px;
         padding-right: 3px;
         color: #C80000;
         font-weight: normal;
