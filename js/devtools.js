@@ -3,6 +3,6 @@ chrome.devtools.panels.elements.createSidebarPane(
     "CSS Diff",
     function(sidebar) {
         sidebar.setPage("sidebar.html");
-        sidebar.setHeight("250px");
+        sidebar.setHeight("350px");
     }
 );
