@@ -1,6 +1,5 @@
 function DiffRenderer(container) {
     var suffixes = ["background", "margin", "padding", "border", "outline", "font", "listStyle", "overflow"];
-    var container = container;
 
     //Generates reasonable name for element from its tag name, classes and id
     var elementName = function(element) {
@@ -13,25 +12,25 @@ function DiffRenderer(container) {
         }
 
         return name;
-    }
+    };
 
     //Checks if attribute has a (known) suffix and returns it
     var getSuffix = function(attrName) {
-        for(var idx in suffixes) {
-            var suffix = suffixes[idx];
+        for(var i=0, l=suffixes.length; i<l; i++) {
+            var suffix = suffixes[i];
 
-            if( attrName.length > suffix.length && attrName.substr(0, suffix.length) == suffix ) {
+            if( attrName.length > suffix.length && attrName.substr(0, suffix.length) === suffix ) {
                 return suffix;
             }
         }
 
         return null;
-    }
+    };
 
     //Checks if given attribute name is used as a suffix for other attributes
     var isSuffix = function(attrName) {
         return ( suffixes.indexOf(attrName) !== -1 );
-    }
+    };
 
     //Renders a table with attribute differences
     //TODO Clean it up! Rethink the HTML structure.
@@ -45,6 +44,9 @@ function DiffRenderer(container) {
 
         buffer += '<table>';
         for(var name in diff) {
+            if(!diff.hasOwnProperty(name)) {
+                continue;
+            }
             var value = diff[name];
 
             var suffix = getSuffix(name);
@@ -99,7 +101,7 @@ function DiffRenderer(container) {
                 for (var j = 0, jl = children.length; j < jl ; j++) {
                     children[j].style.display = (children[j].style.display !== "table-row") ? "table-row" : "none";
                 }
-            }
+            };
         }
-    }
+    };
 }

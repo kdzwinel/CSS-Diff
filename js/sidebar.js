@@ -12,11 +12,11 @@ var page_compareElements = function(a, b) {
         var avalue = aComputed[aname];
         var bvalue = bComputed[aname];
 
-        if( aname === 'length' || aname === 'cssText' || typeof avalue === "function" || avalue == bvalue) {
+        if( !aComputed.hasOwnProperty(aname) || aname === 'cssText' || avalue === bvalue) {
             continue;
         }
 
-        diff[aname] = [avalue, bvalue]
+        diff[aname] = [avalue, bvalue];
     }
     
     return {
