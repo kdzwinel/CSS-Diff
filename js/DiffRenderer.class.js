@@ -40,7 +40,10 @@ function DiffRenderer(container) {
 
         buffer += '<div class="block">';
         buffer += '<p class="description">Comparing <strong class="element0">' + elementName(element0) + '</strong> ';
-        buffer += 'with <strong class="element1">' + elementName(element1) + '</strong>.</p>';
+        buffer += (element0.differentTab) ? '(from different tab) ' : '';
+        buffer += 'with <strong class="element1">' + elementName(element1) + '</strong>';
+        buffer += (element1.differentTab) ? '(from different tab)' : '';
+        buffer += '.</p>';
 
         buffer += '<table>';
         for(var name in diff) {
@@ -71,7 +74,7 @@ function DiffRenderer(container) {
             row += "</tr>";
 
             //webkit attributes will be put to a different table
-            if(name.substr(0, 6) === "webkit") {
+            if(name.substr(0, 8) === "-webkit-") {
                 webkitBuffer += row;
             } else {
                 buffer += row;

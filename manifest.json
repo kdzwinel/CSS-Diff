@@ -1,10 +1,10 @@
 {
   "name": "CSS Diff",
   "description": "Easily compare CSS of two HTML elements.",
-  "version": "0.21",
+  "version": "0.30",
   "manifest_version": 2,
   "minimum_chrome_version": "18.0",
-  "permissions": [],
+  "permissions": ["storage"],
   "icons": {
      "48": "img/logo_48.png",
      "64": "img/logo_64.png",
