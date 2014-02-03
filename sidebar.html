@@ -1,10 +1,37 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <title>CSS Diff</title>
+
     <script src='js/DiffRenderer.class.js'></script>
     <script src='js/CSSSnapshooter.class.js'></script>
     <script src='js/sidebar.js'></script>
+
     <link href="css/sidebar.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+<div id='wrapper' class="showMessage">
+    <div id="message">
+        <p>Loading...</p>
+    </div>
+
+    <div id="selected">
+        <p>Last inspected: <strong>-nothing-</strong>
+            <button>Compare</button>
+        </p>
+    </div>
+
+    <div id="result">
+        <div id="comparing"></div>
+        <table class="monospace"></table>
+        <div class='sidebar-separator'>Prefixed properties</div>
+        <table class="monospace"></table>
+    </div>
+
+    <div id="thirdPartyCookiesWarning">
+        <p>This extension is currently running in the "limited mode" due to "block third party cookies" setting being
+            enabled. <a href="https://github.com/kdzwinel/CSS-Diff/issues/7" target="_blank">Read more</a>.</p>
+    </div>
+</div>
 </body>
 </html>

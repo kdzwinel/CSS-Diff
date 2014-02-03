@@ -25,6 +25,13 @@ https://github.com/kdzwinel/CSS-Diff/issues
 Changelog
 ---------
 
+### 0.30 ###
+
+New features:
++ ability to compare elements from different tabs
++ more control over what is being compared through the 'Compare' button
++ improved look
+
 ### 0.20 ###
 
 New features:

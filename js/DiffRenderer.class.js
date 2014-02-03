@@ -1,25 +1,14 @@
 function DiffRenderer(container) {
+    "use strict";
+
     var suffixes = ["background", "margin", "padding", "border", "outline", "font", "listStyle", "overflow"];
 
-    //Generates reasonable name for element from its tag name, classes and id
-    var elementName = function(element) {
-        var name = element.tag;
-
-        if(element.id !== null) {
-            name += '#' + element.id;
-        } else if(element.class !== null) {
-            name += '.' + element.class.replace(/ /g,'.');
-        }
-
-        return name;
-    };
-
     //Checks if attribute has a (known) suffix and returns it
-    var getSuffix = function(attrName) {
-        for(var i=0, l=suffixes.length; i<l; i++) {
+    var getSuffix = function (attrName) {
+        for (var i = 0, l = suffixes.length; i < l; i++) {
             var suffix = suffixes[i];
 
-            if( attrName.length > suffix.length && attrName.substr(0, suffix.length) === suffix ) {
+            if (attrName.length > suffix.length && attrName.substr(0, suffix.length) === suffix) {
                 return suffix;
             }
         }
@@ -28,80 +17,82 @@ function DiffRenderer(container) {
     };
 
     //Checks if given attribute name is used as a suffix for other attributes
-    var isSuffix = function(attrName) {
+    var isSuffix = function (attrName) {
         return ( suffixes.indexOf(attrName) !== -1 );
     };
 
+    //Generates reasonable name for element from its tag name, classes and id
+    this.nameElement = function (element) {
+        var name = element.tag;
+
+        if (element.id !== null) {
+            name += '#' + element.id;
+        } else if (element.class !== null) {
+            name += '.' + element.class.replace(/ /g, '.');
+        }
+
+        return name;
+    };
+
     //Renders a table with attribute differences
-    //TODO Clean it up! Rethink the HTML structure.
-    this.render = function(element0, element1, diff) {
+    this.render = function (element0, element1, diff) {
         var buffer = "";
         var webkitBuffer = "";
 
-        buffer += '<div class="block">';
-        buffer += '<p class="description">Comparing <strong class="element0">' + elementName(element0) + '</strong> ';
+        buffer += '<p class="description">Comparing <strong class="element0">' + this.nameElement(element0) + '</strong> ';
         buffer += (element0.differentTab) ? '(from different tab) ' : '';
-        buffer += 'with <strong class="element1">' + elementName(element1) + '</strong>';
+        buffer += 'with <strong class="element1">' + this.nameElement(element1) + '</strong>';
         buffer += (element1.differentTab) ? '(from different tab)' : '';
         buffer += '.</p>';
 
-        buffer += '<table>';
-        for(var name in diff) {
-            if(!diff.hasOwnProperty(name)) {
-                continue;
-            }
-            var value = diff[name];
+        container.querySelector('#comparing').innerHTML = buffer;
+        buffer = '';
 
-            var suffix = getSuffix(name);
+        for (var i = 0, il = diff.length; i < il; i++) {
+            var property = diff[i];
+
+            var suffix = getSuffix(property.name);
             var suffixClass = "";
             var suffixParentAttributes = "";
             var row = "";
 
-            if(suffix !== null) {
+            if (suffix !== null) {
                 suffixClass = " suffix " + suffix;
             }
 
-            if(isSuffix(name)) {
-                suffixParentAttributes = "class='suffix-parent' data-suffix='" + name + "'";
+            if (isSuffix(property.name)) {
+                suffixParentAttributes = "class='suffix-parent' data-suffix='" + property.name + "'";
             }
 
             row += "<tr class='upper" + suffixClass + "'>";
-                row += "<th rowspan='2' " + suffixParentAttributes + ">" + name + "</th>";
-                row += "<td class='element0'>" + value[0] + "</td>";
+            row += "<th rowspan='2' " + suffixParentAttributes + ">" + property.name + "</th>";
+            row += "<td class='element0'>" + property.value1 + "</td>";
             row += "</tr>";
             row += "<tr class='lower" + suffixClass + "'>";
-                row += "<td class='element1'>" + value[1] + "</td>";
+            row += "<td class='element1'>" + property.value2 + "</td>";
             row += "</tr>";
 
             //webkit attributes will be put to a different table
-            if(name.substr(0, 8) === "-webkit-") {
+            if (property.name.substr(0, 8) === "-webkit-") {
                 webkitBuffer += row;
             } else {
                 buffer += row;
             }
         }
-        buffer += '</table></div>';
-
-        if(webkitBuffer.length > 0) {
-            buffer += "<div class='sidebar-separator'>WebKit attributes</div>";
-            buffer += "<div class='block'><table>";
-            buffer += webkitBuffer;
-            buffer += "</table></div>";
-        }
-
-        container.innerHTML = buffer;
+        container.querySelectorAll('#result table')[0].innerHTML = buffer;
+        container.querySelectorAll('#result table')[1].innerHTML = webkitBuffer;
 
         //react to "onclick" events on attributes that have children
         var suffixParents = container.getElementsByClassName('suffix-parent');
-        for (var i = 0, il = suffixParents.length; i < il ; i++) {
+        for (i = 0, il = suffixParents.length; i < il; i++) {
             var suffixParent = suffixParents[i];
 
-            suffixParent.onclick = function() {
+            suffixParent.onclick = function () {
                 this.classList.contains("open") ? this.classList.remove("open") : this.classList.add("open");
 
                 var children = container.getElementsByClassName(this.dataset.suffix);
 
-                for (var j = 0, jl = children.length; j < jl ; j++) {
+                for (var j = 0, jl = children.length; j < jl; j++) {
                     children[j].style.display = (children[j].style.display !== "table-row") ? "table-row" : "none";
                 }
             };
