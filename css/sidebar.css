@@ -68,6 +68,11 @@ button:focus {
     outline: none;
 }
 
+button:active {
+    background-color: rgb(252, 252, 252);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgb(252, 252, 252)), to(rgb(237, 237, 237)));
+}
+
 p {
     padding: 0 4px 0 4px;
 }
