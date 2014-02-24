@@ -124,7 +124,7 @@ td, th {
 }
 
 th {
-    width: 90px;
+    width: 120px;
     padding-right: 3px;
     padding-left: 4px;
     color: #C80000;
@@ -150,11 +150,11 @@ tr.lower td {
     border-bottom: solid rgb(191, 191, 191) 1px;
 }
 
-th.suffix-parent {
+th.parent-property {
     cursor: pointer;
 }
 
-th.suffix-parent::before {
+th.parent-property::before {
     content: ' ';
     opacity: 0.55;
     float: left;
@@ -166,14 +166,14 @@ th.suffix-parent::before {
     background-size: 8px 8px;
 }
 
-th.suffix-parent.open::before {
+th.parent-property.open::before {
     background-image: url(../img/treeDownTriangleBlack.png);
 }
 
-.suffix {
+.child-property {
     display: none;
 }
 
-.suffix th {
+.child-property th {
     padding-left: 20px;
 }
