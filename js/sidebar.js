@@ -1,7 +1,7 @@
 (function () {
     "use strict";
 
-    var body, button, diffRenderer, lastSelected = null, fallbackElements = [];
+    var body, button, diffRenderer, fallbackElements = [];
 
     // Returns CSS properties (in alphabetic order) that differ between two given HTML elements.
     function compareStyles(aComputed, bComputed) {
@@ -92,18 +92,16 @@
     }
 
     function updateLastSelected(element) {
-        lastSelected = element;
-
         body.querySelector('#selected strong').innerText = diffRenderer.nameElement(element);
     }
 
-    function elementSelected() {
+    function loadLastSelected(callback) {
         chrome.devtools.inspectedWindow.eval("(" + CSSSnapshooter.toString() + ")($0)", function (result, isException) {
             if (!isException && result !== null) {
                 //include tabId so that we are able to differentiate between elements from current and other tab
                 result.tabId = chrome.devtools.inspectedWindow.tabId;
 
-                updateLastSelected(result);
+                callback(result);
             }
         });
     }
@@ -123,15 +121,13 @@
 
         diffRenderer = new DiffRenderer(body);
 
-        chrome.devtools.panels.elements.onSelectionChanged.addListener(elementSelected);
+        chrome.devtools.panels.elements.onSelectionChanged.addListener(loadLastSelected.bind(this, updateLastSelected));
 
         //load last inspected element right away
-        elementSelected();
+        loadLastSelected(updateLastSelected);
 
         button.addEventListener('click', function () {
-            if (lastSelected) {
-                pushNewElement(lastSelected);
-            }
+            loadLastSelected(pushNewElement);
         });
 
         //load elements from storage and render them right away
