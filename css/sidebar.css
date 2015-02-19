@@ -2,6 +2,7 @@
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     -webkit-user-select: initial;
+  user-select: initial;
 }
 
 body {

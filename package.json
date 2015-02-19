@@ -1,0 +1,24 @@
+{
+  "name": "CSS-Diff",
+  "version": "0.32.0",
+  "description": "Easily compare CSS of two HTML elements.",
+  "main": "Gruntfile.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/kdzwinel/CSS-Diff.git"
+  },
+  "author": "Konrad Dzwinel",
+  "license": "GPL",
+  "bugs": {
+    "url": "https://github.com/kdzwinel/CSS-Diff/issues"
+  },
+  "homepage": "https://github.com/kdzwinel/CSS-Diff",
+  "dependencies": {
+    "grunt": "~0.4.4",
+    "grunt-contrib-jshint": "~0.9.2",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-contrib-csslint": "~0.2.0",
+    "grunt-html-validation": "~0.1.14",
+    "grunt-zip": "~0.13.0"
+  }
+}
