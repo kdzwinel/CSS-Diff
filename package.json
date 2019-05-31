@@ -22,7 +22,7 @@
     "grunt-contrib-csslint": "^2.0.0",
     "grunt-contrib-jshint": "^2.1.0",
     "grunt-contrib-watch": "^1.1.0",
-    "grunt-html-validation": "~0.1.14",
+    "grunt-html": "^10.1.0",
     "grunt-zip": "^0.18.2"
   }
 }
