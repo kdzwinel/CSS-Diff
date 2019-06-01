@@ -106,6 +106,12 @@
     });
   }
 
+  function isDarkTheme() {
+    // this function won't recognize custom themes installed via extensions,
+    // as they don't change the name of the theme
+    return chrome.devtools.panels.themeName === 'dark';
+  }
+
   function recognizeOS() {
     var os = null;
     if (navigator.appVersion.indexOf("Win") !== -1) {
@@ -166,6 +172,10 @@
     var os = recognizeOS();
     if (os) {
       body.classList.add('platform-' + os);
+    }
+      // add a class for the dark devtools theme
+    if (isDarkTheme()) {
+      body.classList.add('theme-dark');
     }
   };
 })();
