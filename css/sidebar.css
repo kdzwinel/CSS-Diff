@@ -45,6 +45,10 @@ body.platform-windows .monospace {
   font-family: Consolas, Lucida Console, monospace;
 }
 
+body.theme-dark {
+  color: #bcbcbc;
+}
+
 #wrapper.showMessage #result {
   display: none;
 }
@@ -83,6 +87,10 @@ p {
   border-bottom: solid 1px rgb(191, 191, 191);
 }
 
+.theme-dark #selected {
+  border-bottom: solid 1px #525252;
+}
+
 #selected button {
   display: inline-block;
 }
@@ -98,12 +106,17 @@ p {
 
 .sidebar-separator {
   background-color: rgb(230, 230, 230);
-  padding: 0 5px;
+  padding: 3px 5px;
   color: rgb(50, 50, 50);
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
   line-height: 16px;
+}
+
+.theme-dark .sidebar-separator {
+  background-color: #333;
+  color: #bcbcbc;
 }
 
 #message p {
@@ -114,11 +127,20 @@ p {
   color: black;
 }
 
+.theme-dark #message p {
+  color: #bcbcbc;
+}
+
 table {
   width: 100%;
   border-bottom: solid rgb(191, 191, 191) 1px;
   border-top: solid rgb(191, 191, 191) 1px;
   border-collapse: collapse;
+}
+
+.theme-dark table {
+  border-bottom: solid #525252 1px;
+  border-top: solid #525252 1px;
 }
 
 td, th {
@@ -137,6 +159,13 @@ th {
   border-bottom: solid 1px rgb(191, 191, 191);
 }
 
+.theme-dark th {
+  background-color: #333;
+  color: #bcbcbc;
+  border-right: solid 1px #525252;
+  border-bottom: solid 1px #525252;
+}
+
 td {
   padding-left: 4px;
 }
@@ -145,8 +174,16 @@ td {
   background-color: #F0F0F0;
 }
 
+.theme-dark .element1 {
+  background-color: #333;
+}
+
 tr.lower td {
   border-bottom: solid rgb(191, 191, 191) 1px;
+}
+
+.theme-dark tr.lower td {
+  border-bottom: solid #525252 1px;
 }
 
 th.parent-property {
@@ -154,19 +191,14 @@ th.parent-property {
 }
 
 th.parent-property::before {
-  content: ' ';
+  content: '\25B6 ';
   opacity: 0.55;
-  float: left;
-  width: 8px;
-  height: 11px;
   padding-right: 3px;
   -webkit-user-select: none;
-  background: url(../img/treeRightTriangleBlack.png) left center no-repeat;
-  background-size: 8px 8px;
 }
 
 th.parent-property.open::before {
-  background-image: url(../img/treeDownTriangleBlack.png);
+  content: '\25BC ';
 }
 
 .child-property {
