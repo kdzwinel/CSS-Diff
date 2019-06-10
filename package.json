@@ -1,6 +1,6 @@
 {
   "name": "CSS-Diff",
-  "version": "0.32.0",
+  "version": "0.33.0",
   "description": "Easily compare CSS of two HTML elements.",
   "main": "Gruntfile.js",
   "repository": {
