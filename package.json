@@ -16,13 +16,13 @@
     "url": "https://github.com/kdzwinel/CSS-Diff/issues"
   },
   "homepage": "https://github.com/kdzwinel/CSS-Diff",
-  "dependencies": {
+  "devDependencies": {
     "grunt": "^1.0.4",
     "grunt-cli": "^1.3.2",
     "grunt-contrib-csslint": "^2.0.0",
     "grunt-contrib-jshint": "^2.1.0",
     "grunt-contrib-watch": "^1.1.0",
-    "grunt-html": "^10.1.0",
-    "grunt-zip": "^0.18.2"
+    "grunt-zip": "^0.18.2",
+    "grunt-htmllint": "^0.3.0"
   }
 }

@@ -29,7 +29,11 @@ module.exports = function (grunt) {
       }
     },
     htmllint: {
-        all: ['*.html']
+        options: {
+          'class-style': 'none',
+          'id-class-style': false
+        },
+        src: ['*.html']
     },
     zip: {
       'css-diff-<%= pkg.version %>.zip': ['css/**/*', 'img/**/*.png', 'img/**/*.jpg', 'js/**/*', '*.html', 'manifest.json']
@@ -38,7 +42,7 @@ module.exports = function (grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-csslint');
-  grunt.loadNpmTasks('grunt-html');
+  grunt.loadNpmTasks('grunt-htmllint');
   grunt.loadNpmTasks('grunt-zip');
 
   grunt.registerTask('default', ['jshint', 'htmllint']);
