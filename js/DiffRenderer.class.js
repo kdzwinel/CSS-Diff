@@ -104,9 +104,9 @@ function DiffRenderer(container) {
   this.nameElement = function (element) {
     var name = element.tag;
 
-    if (element.id !== null) {
+    if (element.id !== null && element.id !== undefined) {
       name += '#' + element.id;
-    } else if (element.class !== null) {
+    } else if (element.class !== null && element.class !== undefined) {
       name += '.' + element.class.replace(/ /g, '.');
     }
 
