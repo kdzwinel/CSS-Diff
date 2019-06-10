@@ -1,2 +1,4 @@
+node_modules
+validation-status.json
 *.sublime-workspace
 *.sublime-project
