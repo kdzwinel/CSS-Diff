@@ -8,7 +8,7 @@ Chrome/Chromium extension that allows to easily compare CSS of two HTML elements
 Usage
 -----
 
-You may install this extension from its [Chrome Web Store page](https://chrome.google.com/webstore/detail/css-diff/pefnhibkhcfooofgmgoipfpcojnhhljm) or download it from GitHub and manually load as an 'Unpacked extension' via chrome extensions page (`chrome://extensions`).
+You may install this extension by downloading it from GitHub and manually loading as an 'Unpacked extension' via chrome extensions page (`chrome://extensions`).
 
 To compare elements, activate Chrome Developer Tools (F12) and open "CSS Diff" tab located in the right panel of the "Elements" module (please refer to the screenshot). Next, inspect (e.g. using magnifying glass button) first of the elements that you wish to compare. As soon as it will be selected, CSS Diff will display it in the "last inspected" section. Hit "Compare" button and repeat the whole process for the another element. As soon as two HTML elements will be selected, CSS Diff will show all CSS differences between them.
 
